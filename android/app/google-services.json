@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865333002685",
+    "project_id": "satoshiapp-4987d",
+    "storage_bucket": "satoshiapp-4987d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865333002685:android:a4cd6aec15a64673d512d4",
+        "android_client_info": {
+          "package_name": "com.example.satoshi_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Cj8WMar856OeD1AGRFb195cebXchZHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
