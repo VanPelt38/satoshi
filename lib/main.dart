@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:satoshi_app/Login/login_view_model.dart';
-import 'login/login_view.dart';
+import 'package:satoshi_app/auth/auth_view_model.dart';
+import 'package:satoshi_app/login/login_view_model.dart';
+import 'auth/auth_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -12,10 +13,13 @@ await Firebase.initializeApp(
 );
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LoginViewModel(),
-      child: const MyApp()
-      )
+    MultiProvider(
+      providers:[
+      ChangeNotifierProvider(create: (context) => AuthViewModel()),
+      ChangeNotifierProvider(create: (context) => LoginViewModel()),
+    ],
+    child: const MyApp()
+    ),
     );
 }
 
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const LoginView(),
+      home: const AuthView(),
     );
   }
 }
