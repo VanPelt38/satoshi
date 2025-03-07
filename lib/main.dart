@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:satoshi_app/auth/auth_view_model.dart';
 import 'package:satoshi_app/login/login_view_model.dart';
+import 'package:satoshi_app/signup/signup_view_model.dart';
+import 'package:satoshi_app/about_you/about_you_view_model.dart';
 import 'auth/auth_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -17,6 +19,8 @@ await Firebase.initializeApp(
       providers:[
       ChangeNotifierProvider(create: (context) => AuthViewModel()),
       ChangeNotifierProvider(create: (context) => LoginViewModel()),
+      ChangeNotifierProvider(create: (context) => SignupViewModel()),
+      ChangeNotifierProvider(create: (context) => AboutYouViewModel()),
     ],
     child: const MyApp()
     ),

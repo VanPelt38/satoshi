@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:satoshi_app/login/login_view_model.dart';
-import 'package:satoshi_app/signup/signup_view.dart';
+import 'package:satoshi_app/signup/signup_view_model.dart';
+import 'package:satoshi_app/about_you/about_you_view.dart';
 import 'package:provider/provider.dart';
 
 
-class LoginView extends StatelessWidget {
-const LoginView({super.key});
+class SignupView extends StatelessWidget {
+const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final loginViewModel = Provider.of<LoginViewModel>(context);
+    final signupViewModel = Provider.of<SignupViewModel>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +34,7 @@ const LoginView({super.key});
               Row (
                 children: <Widget>[
                 Text(
-              'Log in',
+              'Enter your email',
               style: TextStyle(color: Colors.black, fontSize: 18.0,
               fontWeight: FontWeight.bold),
             ),
@@ -47,10 +47,13 @@ const LoginView({super.key});
            Padding(
               padding: EdgeInsets.only(left: 10.0, bottom: 10),
               child:
-            Text(
-              'Enter the email address that you used to sign up to Satoshi',
+              Row (
+                children: <Widget>[
+            Text('Well use this to contact you about your account.',
               style: TextStyle(color: Colors.black, fontSize: 15.0),
             ),
+            Spacer()
+            ]),
            ),
            Padding(padding: EdgeInsets.only(bottom: 10),
            child:
@@ -58,7 +61,7 @@ const LoginView({super.key});
             keyboardType: TextInputType.emailAddress,
             obscureText: true, 
             decoration: const InputDecoration(
-            labelText: 'Your email address',
+            labelText: 'Email address',
             border: InputBorder.none,
             filled: true,
             fillColor: Colors.white
@@ -70,44 +73,13 @@ const LoginView({super.key});
             keyboardType: TextInputType.emailAddress,
             obscureText: true, 
             decoration: const InputDecoration(
-            labelText: 'Your password',
+            labelText: 'Password',
             border: InputBorder.none,
             filled: true,
             fillColor: Colors.white
                 ),
                 ),
-                Padding(
-              padding: EdgeInsets.all(10.0),
-              child:
-            Row(
-              children: <Widget>[
-                  Padding(
-              padding: EdgeInsets.only(right: 5),
-              child:
-              Text(
-              'Dont have an account?',
-              style: TextStyle(color: Colors.black, fontSize: 10.0),
-            )),
-                          TextButton(
-              onPressed: () {
-                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignupView())
-               );
-              },
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero
-              ),
-              child:
-              Text(
-                'Sign up',
-              style: TextStyle(color: const Color.fromARGB(255, 42, 32, 244),
-              fontSize: 10.0
-              ),
-              )
-            )
-              ]
-            )),
+           
             Spacer(),
             Padding(
               padding: EdgeInsets.only(bottom: 32.0),
@@ -118,7 +90,10 @@ const LoginView({super.key});
               child: 
               TextButton(
               onPressed: () {
-                 // Login
+               Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutYouView())
+               );
               },
               style: TextButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 243, 75, 115)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:satoshi_app/auth/auth_view_model.dart';
 import 'package:satoshi_app/login/login_view.dart';
+import 'package:satoshi_app/signup/signup_view.dart';
 import 'package:provider/provider.dart';
 
 
@@ -57,7 +58,10 @@ const AuthView({super.key});
               child: 
               TextButton(
               onPressed: () {
-                // sign up
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupView())
+               );
               },
               style: TextButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 243, 75, 115)
