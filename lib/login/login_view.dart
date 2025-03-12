@@ -56,6 +56,7 @@ const LoginView({super.key});
            child:
            TextField(
             keyboardType: TextInputType.emailAddress,
+            controller: loginViewModel.emailController,
             obscureText: true, 
             decoration: const InputDecoration(
             labelText: 'Your email address',
@@ -68,6 +69,7 @@ const LoginView({super.key});
             ,
                             TextField(
             keyboardType: TextInputType.emailAddress,
+            controller: loginViewModel.passwordController,
             obscureText: true, 
             decoration: const InputDecoration(
             labelText: 'Your password',
@@ -117,8 +119,19 @@ const LoginView({super.key});
               height: 50,
               child: 
               TextButton(
-              onPressed: () {
-                 // Login
+              onPressed: () async {
+                 bool signInSuccessful = await loginViewModel.signIn();
+                if (signInSuccessful) {
+              //     Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => AboutYouView())
+              //  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Uh-oh - there was a problem signing in. Please try again."),
+                    backgroundColor: const Color.fromARGB(255, 176, 35, 25),
+                    ));
+                }
               },
               style: TextButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 243, 75, 115)
