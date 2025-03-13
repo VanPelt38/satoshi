@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:satoshi_app/login/login_view_model.dart';
 import 'package:satoshi_app/signup/signup_view.dart';
+import 'package:satoshi_app/dashboard/dashboard_view.dart';
 import 'package:provider/provider.dart';
 
 
@@ -57,7 +58,6 @@ const LoginView({super.key});
            TextField(
             keyboardType: TextInputType.emailAddress,
             controller: loginViewModel.emailController,
-            obscureText: true, 
             decoration: const InputDecoration(
             labelText: 'Your email address',
             border: InputBorder.none,
@@ -122,10 +122,10 @@ const LoginView({super.key});
               onPressed: () async {
                  bool signInSuccessful = await loginViewModel.signIn();
                 if (signInSuccessful) {
-              //     Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => AboutYouView())
-              //  );
+                  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardView())
+               );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("Uh-oh - there was a problem signing in. Please try again."),
