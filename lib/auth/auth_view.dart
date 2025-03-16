@@ -20,10 +20,13 @@ class AuthView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Spacer(),
-            Image.asset('assets/images/bitcoinFlutter.png'),
+            Text(
+              'toshí',
+              style: TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold),
+            ),
             Text(
               'Bitcoin, made easy.',
-              style: TextStyle(color: Colors.white, fontSize: 30.0),
+              style: TextStyle(color: Colors.white, fontSize: 12.0),
             ),
             Spacer(),
             Padding(
