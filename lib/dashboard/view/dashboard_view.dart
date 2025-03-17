@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:satoshi_app/dashboard/dashboard_view_model.dart';
-import 'package:satoshi_app/login/login_view.dart';
-import 'package:satoshi_app/signup/signup_view.dart';
+import 'package:satoshi_app/dashboard/business/dashboard_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:satoshi_app/dashboard/view/investment_graph_view.dart';
 
 
 class DashboardView extends StatelessWidget {
@@ -73,7 +72,7 @@ const DashboardView({super.key});
               padding: EdgeInsets.only(top: 10.0),
               child:
 Text(
-                'Your investment',
+                'Your toshí investment',
               style: TextStyle(color: Colors.white,
               fontSize: 18.0
               ),
@@ -99,10 +98,8 @@ Text(
     ],
   ),
   child: Center(
-    child: Text(
-      "Investment Graph",
-      style: TextStyle(color: Colors.black, fontSize: 16),
-    ),
+    child: 
+    InvestmentGraphView()
   ),
 ),
 Spacer()

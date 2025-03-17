@@ -92,17 +92,17 @@ const SignupView({super.key});
               TextButton(
               onPressed: () async {
                 bool signUpSuccessful = await signupViewModel.signUp();
-                if (signUpSuccessful) {
+                // if (signUpSuccessful) {
                   Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => AboutYouView())
                );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Uh-oh - there was a problem signing up. Please try again."),
-                    backgroundColor: const Color.fromARGB(255, 176, 35, 25),
-                    ));
-                }
+                // } else {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     SnackBar(content: Text("Uh-oh - there was a problem signing up. Please try again."),
+                //     backgroundColor: const Color.fromARGB(255, 176, 35, 25),
+                //     ));
+                // }
                
               },
               style: TextButton.styleFrom(

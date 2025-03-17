@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:satoshi_app/login/login_view_model.dart';
 import 'package:satoshi_app/signup/signup_view.dart';
-import 'package:satoshi_app/dashboard/dashboard_view.dart';
+import 'package:satoshi_app/dashboard/view/dashboard_view.dart';
 import 'package:provider/provider.dart';
 
 
