@@ -19,7 +19,7 @@ const SignupView({super.key});
         }
         , icon: const Icon(
           Icons.arrow_back,
-          color: Color.fromARGB(255, 243, 75, 115)
+          color: Color.fromARGB(255, 72, 1, 18)
         )
         ),
       ),

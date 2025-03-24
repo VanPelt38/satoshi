@@ -6,17 +6,12 @@ class AboutYouViewModel extends ChangeNotifier {
 
 final FirestoreService firestoreService = FirestoreService();
 final FirebaseAuthService firebaseAuthService = FirebaseAuthService();
-String? _firstNames;
 final TextEditingController firstNamesController = TextEditingController();
-String? _lastName;
 final TextEditingController lastNameController = TextEditingController();
 DateTime? _dob;
 final TextEditingController dobController = TextEditingController();
 bool _isLoading = false;
 String? _snackBarMessage;
-
-String ? get firstNames => _firstNames;
-String ? get lastName => _lastName;
 DateTime ? get selectedDate => _dob;
 bool get isLoading => _isLoading;
 String ? get snackBarMessage => _snackBarMessage;
@@ -45,11 +40,12 @@ Future<bool> profileCreated() async {
 
 _isLoading = true;
 
-if (_firstNames != null && _lastName != null && _dob != null) {
+if (firstNamesController.text.isNotEmpty && lastNameController.text.isNotEmpty && _dob != null) {
   await saveProfileToFireStore();
   _isLoading = false;
   return true;
 } else {
+
   _isLoading = false;
   _snackBarMessage = "Uh-oh - please enter all your details before continuing.";
   return false;
@@ -61,8 +57,8 @@ Future saveProfileToFireStore() async {
  String? userId = firebaseAuthService.getCurrentUser()?.uid;
 
  firestoreService.addDocumentWithId("users", "personalDetails", userId ?? "", {
-    "firstNames": _firstNames,
-    "lastName": _lastName,
+    "firstNames": firstNamesController.text.trim(),
+    "lastName": lastNameController.text.trim(),
     "dob": _dob,
     "userId": userId
  });

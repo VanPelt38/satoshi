@@ -8,6 +8,8 @@ import 'package:satoshi_app/plaid/plaid_view_model.dart';
 import 'package:satoshi_app/signup/signup_view_model.dart';
 import 'package:satoshi_app/about_you/about_you_view_model.dart';
 import 'package:satoshi_app/dashboard/business/dashboard_view_model.dart';
+import 'package:satoshi_app/your_info/your_info_view_model.dart';
+import 'package:satoshi_app/personal_details/personal_details_view_model.dart';
 import 'auth/auth_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -26,6 +28,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AboutYouViewModel()),
         ChangeNotifierProvider(create: (context) => DashboardViewModel()),
         ChangeNotifierProvider(create: (context) => PlaidViewModel()),
+        ChangeNotifierProvider(create: (context) => YourInfoViewModel()),
+        ChangeNotifierProvider(create: (context) => PersonalDetailsViewModel()),
       ],
       child: const MyApp(),
     ),

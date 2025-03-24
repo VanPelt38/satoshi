@@ -45,9 +45,14 @@ class FirestoreService {
     }
   }
 
-  Future<DocumentSnapshot> getDocumentById(String collection, String docId) async {
+  Future<DocumentSnapshot> getDocumentById(String collection, String? subcollection1, String docId) async {
+
+final path = subcollection1 == null ? _db.collection(collection) : _db.collection(collection)
+    .doc(docId)
+    .collection(subcollection1);
+
     try {
-      return await _db.collection(collection).doc(docId).get();
+      return await path.doc(docId).get();
     } catch (e) {
       print("Error fetching document: $e");
       rethrow;

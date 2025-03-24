@@ -25,7 +25,11 @@ const AboutYouView({super.key});
         ),
       ),
       backgroundColor: Color.fromARGB(255, 240, 238, 238),
-      body: Center(
+      body: 
+      Stack(children: [
+
+     
+      Center(
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -96,6 +100,7 @@ const AboutYouView({super.key});
               child: 
            TextField(
             keyboardType: TextInputType.emailAddress,
+            controller: aboutYouViewModel.firstNamesController,
             decoration: const InputDecoration(
             labelText: 'First and middle name(s)',
             border: InputBorder.none,
@@ -127,6 +132,7 @@ const AboutYouView({super.key});
               child: 
            TextField(
             keyboardType: TextInputType.emailAddress,
+            controller: aboutYouViewModel.lastNameController,
             decoration: const InputDecoration(
             labelText: 'Last name',
             border: InputBorder.none,
@@ -191,13 +197,20 @@ const AboutYouView({super.key});
               child: 
               TextButton(
               onPressed: () {
-                final profileSetup = aboutYouViewModel.profileCreated();
-                if (profileSetup == true) {
+                final profileSetup = aboutYouViewModel.profileCreated().then((success) {
+if (success == true) {
                        Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => PlaidView())
                );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('${aboutYouViewModel.snackBarMessage}'),
+                    backgroundColor: const Color.fromARGB(255, 176, 35, 25),
+                    ));
                 }
+                });
+                
               },
               style: TextButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 243, 75, 115)
@@ -215,6 +228,19 @@ const AboutYouView({super.key});
           ],
         ),
       ),
+      if (aboutYouViewModel.isLoading)
+                  Positioned.fill(
+              child: Container(
+                color: Colors.black.withOpacity(0.5), // Semi-transparent background
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white, // Customize color
+                  ),
+                ),
+              ),
+            )
+  
+       ]),
       floatingActionButton: null,
     );
   }

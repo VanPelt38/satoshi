@@ -20,7 +20,7 @@ const LoginView({super.key});
         }
         , icon: const Icon(
           Icons.arrow_back,
-          color: Color.fromARGB(255, 243, 75, 115)
+          color: Color.fromARGB(255, 72, 1, 18)
         )
         ),
       ),
@@ -49,7 +49,7 @@ const LoginView({super.key});
               padding: EdgeInsets.only(left: 10.0, bottom: 10),
               child:
             Text(
-              'Enter the email address that you used to sign up to Satoshi',
+              'Enter the email address that you used to sign up to toshí',
               style: TextStyle(color: Colors.black, fontSize: 15.0),
             ),
            ),
