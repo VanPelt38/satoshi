@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:satoshi_app/dashboard/dashboard_view_model.dart';
-import 'package:satoshi_app/login/login_view.dart';
-import 'package:satoshi_app/signup/signup_view.dart';
+import 'package:satoshi_app/dashboard/business/dashboard_view_model.dart';
+import 'package:satoshi_app/your_info/your_info_view.dart';
 import 'package:provider/provider.dart';
+import 'package:satoshi_app/dashboard/view/investment_graph_view.dart';
 
 
 class DashboardView extends StatelessWidget {
@@ -13,6 +13,7 @@ const DashboardView({super.key});
     final dashboardViewModel = Provider.of<DashboardViewModel>(context);
 
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      dashboardViewModel.getUserDetails();
       dashboardViewModel.getCurrentBitcoinPrice();
     }
       
@@ -23,16 +24,23 @@ const DashboardView({super.key});
         automaticallyImplyLeading: false,
         title: Align(
           alignment: Alignment.centerLeft,
-          child: Text(
-              "Welcome, Jake",
+          child: 
+          dashboardViewModel.userName != null ?
+          Text(
+              "Welcome, ${dashboardViewModel.userName}",
               style: TextStyle(color: Colors.black, fontSize: 18.0,
               fontWeight: FontWeight.bold)
-          ),
+          ) :
+          SizedBox()
+          ,
         ),
         backgroundColor: Color.fromARGB(255, 240, 238, 238),
         actions: [
           IconButton(onPressed: () {
-        // Navigate to profile
+        Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => YourInfoView()),
+                    );
         }
         , icon: const Icon(
           Icons.account_circle_rounded,
@@ -73,7 +81,7 @@ const DashboardView({super.key});
               padding: EdgeInsets.only(top: 10.0),
               child:
 Text(
-                'Your investment',
+                'Your toshí investment',
               style: TextStyle(color: Colors.white,
               fontSize: 18.0
               ),
@@ -99,10 +107,8 @@ Text(
     ],
   ),
   child: Center(
-    child: Text(
-      "Investment Graph",
-      style: TextStyle(color: Colors.black, fontSize: 16),
-    ),
+    child: 
+    InvestmentGraphView()
   ),
 ),
 Spacer()

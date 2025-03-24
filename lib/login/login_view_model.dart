@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:satoshi_app/networking/firebase_auth_service.dart';
+import 'package:satoshi_app/networking/firebase/firebase_auth_service.dart';
 
 class LoginViewModel extends ChangeNotifier {
   
